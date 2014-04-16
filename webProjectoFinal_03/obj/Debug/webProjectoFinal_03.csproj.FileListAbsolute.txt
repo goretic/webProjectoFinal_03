@@ -30,3 +30,4 @@ c:\users\developer\documents\visual studio 2012\Projects\webProjectoFinal_03\web
 c:\users\developer\documents\visual studio 2012\Projects\webProjectoFinal_03\webProjectoFinal_03\bin\Microsoft.AspNet.FriendlyUrls.xml
 c:\users\developer\documents\visual studio 2012\Projects\webProjectoFinal_03\webProjectoFinal_03\obj\Debug\webProjectoFinal_03.dll
 c:\users\developer\documents\visual studio 2012\Projects\webProjectoFinal_03\webProjectoFinal_03\obj\Debug\webProjectoFinal_03.pdb
+C:\Users\developer\Documents\Visual Studio 2012\Projects\webProjectoFinal_03\webProjectoFinal_03\obj\Debug\webProjectoFinal_03.csprojResolveAssemblyReference.cache
