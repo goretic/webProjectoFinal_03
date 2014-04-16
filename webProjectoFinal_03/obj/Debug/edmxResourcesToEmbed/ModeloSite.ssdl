@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mnProjectoFinal_03.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="mnProjectoFinal_03StoreContainer">
+    <EntitySet Name="Cliente" EntityType="mnProjectoFinal_03.Store.Cliente" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClientePK" />
+    </Key>
+    <Property Name="ClientePK" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="varchar" MaxLength="50" />
+    <Property Name="Rua" Type="varchar" MaxLength="50" />
+    <Property Name="Localidade" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoPostal" Type="char" MaxLength="8" />
+    <Property Name="Pais" Type="varchar" MaxLength="50" />
+    <Property Name="NIF" Type="char" MaxLength="9" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Function Name="procAdicionaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nome" Type="varchar" Mode="In" />
+    <Parameter Name="rua" Type="varchar" Mode="In" />
+    <Parameter Name="localidade" Type="varchar" Mode="In" />
+    <Parameter Name="codigoPostal" Type="char" Mode="In" />
+    <Parameter Name="pais" Type="varchar" Mode="In" />
+    <Parameter Name="nif" Type="char" Mode="In" />
+    <Parameter Name="telefone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procAlteraCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clientePK" Type="int" Mode="In" />
+    <Parameter Name="nome" Type="varchar" Mode="In" />
+    <Parameter Name="rua" Type="varchar" Mode="In" />
+    <Parameter Name="localidade" Type="varchar" Mode="In" />
+    <Parameter Name="codigoPostal" Type="char" Mode="In" />
+    <Parameter Name="pais" Type="varchar" Mode="In" />
+    <Parameter Name="nif" Type="char" Mode="In" />
+    <Parameter Name="telefone" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="procEliminaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clientePK" Type="int" Mode="In" />
+  </Function>
+</Schema>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="mnProjectoFinal_03" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbProjectoFinal_03" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="mnProjectoFinal_03.Cliente" />
+    <FunctionImport Name="procAdicionaCliente">
+      <Parameter Name="nome" Mode="In" Type="String" />
+      <Parameter Name="rua" Mode="In" Type="String" />
+      <Parameter Name="localidade" Mode="In" Type="String" />
+      <Parameter Name="codigoPostal" Mode="In" Type="String" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+      <Parameter Name="nif" Mode="In" Type="String" />
+      <Parameter Name="telefone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procAlteraCliente">
+      <Parameter Name="clientePK" Mode="In" Type="Int32" />
+      <Parameter Name="nome" Mode="In" Type="String" />
+      <Parameter Name="rua" Mode="In" Type="String" />
+      <Parameter Name="localidade" Mode="In" Type="String" />
+      <Parameter Name="codigoPostal" Mode="In" Type="String" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+      <Parameter Name="nif" Mode="In" Type="String" />
+      <Parameter Name="telefone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="procEliminaCliente">
+      <Parameter Name="clientePK" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClientePK" />
+    </Key>
+    <Property Name="ClientePK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Rua" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Localidade" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+    <Property Name="Pais" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NIF" Type="String" MaxLength="9" Unicode="false" FixedLength="true" />
+    <Property Name="Telefone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

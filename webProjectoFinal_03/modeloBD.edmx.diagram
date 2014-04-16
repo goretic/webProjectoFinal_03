@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a43da5c02df942ffaddc0851fc7e3393" Name="Diagram1">
+        <EntityTypeShape EntityType="dbModelo.Cliente" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.Conta" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.DetalheConta" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.Documento" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.IVA" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.Linha" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.Produto" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModelo.Serie" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="dbModelo.FK_Documento_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_DetalheConta_Conta" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_DetalheConta_Serie" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_Documento_Serie" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_Linha_Documento" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_Produto_IVA" ManuallyRouted="false" />
+        <AssociationConnector Association="dbModelo.FK_Linha_Produto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

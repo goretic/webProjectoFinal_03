@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbModelo" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="dbModelo.Cliente" />
+    <EntitySet Name="Conta" EntityType="dbModelo.Conta" />
+    <EntitySet Name="DetalheConta" EntityType="dbModelo.DetalheConta" />
+    <EntitySet Name="Documento" EntityType="dbModelo.Documento" />
+    <EntitySet Name="IVA" EntityType="dbModelo.IVA" />
+    <EntitySet Name="Linha" EntityType="dbModelo.Linha" />
+    <EntitySet Name="Produto" EntityType="dbModelo.Produto" />
+    <EntitySet Name="Serie" EntityType="dbModelo.Serie" />
+    <AssociationSet Name="FK_Documento_Cliente" Association="dbModelo.FK_Documento_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Documento" EntitySet="Documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalheConta_Conta" Association="dbModelo.FK_DetalheConta_Conta">
+      <End Role="Conta" EntitySet="Conta" />
+      <End Role="DetalheConta" EntitySet="DetalheConta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalheConta_Serie" Association="dbModelo.FK_DetalheConta_Serie">
+      <End Role="Serie" EntitySet="Serie" />
+      <End Role="DetalheConta" EntitySet="DetalheConta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Documento_Serie" Association="dbModelo.FK_Documento_Serie">
+      <End Role="Serie" EntitySet="Serie" />
+      <End Role="Documento" EntitySet="Documento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Linha_Documento" Association="dbModelo.FK_Linha_Documento">
+      <End Role="Documento" EntitySet="Documento" />
+      <End Role="Linha" EntitySet="Linha" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Produto_IVA" Association="dbModelo.FK_Produto_IVA">
+      <End Role="IVA" EntitySet="IVA" />
+      <End Role="Produto" EntitySet="Produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Linha_Produto" Association="dbModelo.FK_Linha_Produto">
+      <End Role="Produto" EntitySet="Produto" />
+      <End Role="Linha" EntitySet="Linha" />
+    </AssociationSet>
+    <FunctionImport Name="sp_AdicionaCliente">
+      <Parameter Name="nome" Mode="In" Type="String" />
+      <Parameter Name="rua" Mode="In" Type="String" />
+      <Parameter Name="localidade" Mode="In" Type="String" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+      <Parameter Name="codpostal" Mode="In" Type="String" />
+      <Parameter Name="nif" Mode="In" Type="String" />
+      <Parameter Name="telefone" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ApagaCliente">
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EditaCliente">
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+      <Parameter Name="nome" Mode="In" Type="String" />
+      <Parameter Name="rua" Mode="In" Type="String" />
+      <Parameter Name="localidade" Mode="In" Type="String" />
+      <Parameter Name="pais" Mode="In" Type="String" />
+      <Parameter Name="codpostal" Mode="In" Type="String" />
+      <Parameter Name="nif" Mode="In" Type="String" />
+      <Parameter Name="telefone" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClientePK" />
+    </Key>
+    <Property Name="ClientePK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Rua" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Localidade" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Pais" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+    <Property Name="NIF" Type="String" MaxLength="15" Unicode="false" FixedLength="true" />
+    <Property Name="Telefone" Type="String" MaxLength="15" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="Documento" Relationship="dbModelo.FK_Documento_Cliente" FromRole="Cliente" ToRole="Documento" />
+  </EntityType>
+  <EntityType Name="Conta">
+    <Key>
+      <PropertyRef Name="ContaPK" />
+    </Key>
+    <Property Name="ContaPK" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Saldo" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="DetalheConta" Relationship="dbModelo.FK_DetalheConta_Conta" FromRole="Conta" ToRole="DetalheConta" />
+  </EntityType>
+  <EntityType Name="DetalheConta">
+    <Key>
+      <PropertyRef Name="DetalheContaPK" />
+    </Key>
+    <Property Name="DetalheContaPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ContaFK" Type="Int32" />
+    <Property Name="SerieFK" Type="Int32" />
+    <Property Name="Movimento" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="Conta" Relationship="dbModelo.FK_DetalheConta_Conta" FromRole="DetalheConta" ToRole="Conta" />
+    <NavigationProperty Name="Serie" Relationship="dbModelo.FK_DetalheConta_Serie" FromRole="DetalheConta" ToRole="Serie" />
+  </EntityType>
+  <EntityType Name="Documento">
+    <Key>
+      <PropertyRef Name="DocumentoPK" />
+    </Key>
+    <Property Name="DocumentoPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="SerieFK" Type="Int32" />
+    <Property Name="ClienteFK" Type="Int32" />
+    <Property Name="Data" Type="DateTime" Precision="0" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Cliente" Relationship="dbModelo.FK_Documento_Cliente" FromRole="Documento" ToRole="Cliente" />
+    <NavigationProperty Name="Serie" Relationship="dbModelo.FK_Documento_Serie" FromRole="Documento" ToRole="Serie" />
+    <NavigationProperty Name="Linha" Relationship="dbModelo.FK_Linha_Documento" FromRole="Documento" ToRole="Linha" />
+  </EntityType>
+  <EntityType Name="IVA">
+    <Key>
+      <PropertyRef Name="IVAPK" />
+    </Key>
+    <Property Name="IVAPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Taxa" Type="Decimal" Precision="5" Scale="3" />
+    <NavigationProperty Name="Produto" Relationship="dbModelo.FK_Produto_IVA" FromRole="IVA" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Linha">
+    <Key>
+      <PropertyRef Name="LinhaPK" />
+    </Key>
+    <Property Name="LinhaPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentoFK" Type="Int32" />
+    <Property Name="ProdutoFK" Type="Int32" />
+    <Property Name="Quantidade" Type="Int32" />
+    <Property Name="Preco" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IVA" Type="Decimal" Precision="5" Scale="3" />
+    <NavigationProperty Name="Documento" Relationship="dbModelo.FK_Linha_Documento" FromRole="Linha" ToRole="Documento" />
+    <NavigationProperty Name="Produto" Relationship="dbModelo.FK_Linha_Produto" FromRole="Linha" ToRole="Produto" />
+  </EntityType>
+  <EntityType Name="Produto">
+    <Key>
+      <PropertyRef Name="ProdutoPK" />
+    </Key>
+    <Property Name="ProdutoPK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Preço" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Stock" Type="Int32" />
+    <Property Name="IVAFK" Type="Int32" />
+    <NavigationProperty Name="IVA" Relationship="dbModelo.FK_Produto_IVA" FromRole="Produto" ToRole="IVA" />
+    <NavigationProperty Name="Linha" Relationship="dbModelo.FK_Linha_Produto" FromRole="Produto" ToRole="Linha" />
+  </EntityType>
+  <EntityType Name="Serie">
+    <Key>
+      <PropertyRef Name="SeriePK" />
+    </Key>
+    <Property Name="SeriePK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Numero" Type="Int32" />
+    <NavigationProperty Name="DetalheConta" Relationship="dbModelo.FK_DetalheConta_Serie" FromRole="Serie" ToRole="DetalheConta" />
+    <NavigationProperty Name="Documento" Relationship="dbModelo.FK_Documento_Serie" FromRole="Serie" ToRole="Documento" />
+  </EntityType>
+  <Association Name="FK_Documento_Cliente">
+    <End Role="Cliente" Type="dbModelo.Cliente" Multiplicity="0..1" />
+    <End Role="Documento" Type="dbModelo.Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClientePK" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="ClienteFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalheConta_Conta">
+    <End Role="Conta" Type="dbModelo.Conta" Multiplicity="0..1" />
+    <End Role="DetalheConta" Type="dbModelo.DetalheConta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conta">
+        <PropertyRef Name="ContaPK" />
+      </Principal>
+      <Dependent Role="DetalheConta">
+        <PropertyRef Name="ContaFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalheConta_Serie">
+    <End Role="Serie" Type="dbModelo.Serie" Multiplicity="0..1" />
+    <End Role="DetalheConta" Type="dbModelo.DetalheConta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Serie">
+        <PropertyRef Name="SeriePK" />
+      </Principal>
+      <Dependent Role="DetalheConta">
+        <PropertyRef Name="SerieFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Documento_Serie">
+    <End Role="Serie" Type="dbModelo.Serie" Multiplicity="0..1" />
+    <End Role="Documento" Type="dbModelo.Documento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Serie">
+        <PropertyRef Name="SeriePK" />
+      </Principal>
+      <Dependent Role="Documento">
+        <PropertyRef Name="SerieFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Linha_Documento">
+    <End Role="Documento" Type="dbModelo.Documento" Multiplicity="0..1" />
+    <End Role="Linha" Type="dbModelo.Linha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Documento">
+        <PropertyRef Name="DocumentoPK" />
+      </Principal>
+      <Dependent Role="Linha">
+        <PropertyRef Name="DocumentoFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Produto_IVA">
+    <End Role="IVA" Type="dbModelo.IVA" Multiplicity="0..1" />
+    <End Role="Produto" Type="dbModelo.Produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IVA">
+        <PropertyRef Name="IVAPK" />
+      </Principal>
+      <Dependent Role="Produto">
+        <PropertyRef Name="IVAFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Linha_Produto">
+    <End Role="Produto" Type="dbModelo.Produto" Multiplicity="0..1" />
+    <End Role="Linha" Type="dbModelo.Linha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produto">
+        <PropertyRef Name="ProdutoPK" />
+      </Principal>
+      <Dependent Role="Linha">
+        <PropertyRef Name="ProdutoFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

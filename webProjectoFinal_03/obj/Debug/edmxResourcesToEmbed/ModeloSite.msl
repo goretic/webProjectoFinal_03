@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mnProjectoFinal_03StoreContainer" CdmEntityContainer="dbProjectoFinal_03">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="mnProjectoFinal_03.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClientePK" ColumnName="ClientePK" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="procAdicionaCliente" FunctionName="mnProjectoFinal_03.Store.procAdicionaCliente" />
+    <FunctionImportMapping FunctionImportName="procAlteraCliente" FunctionName="mnProjectoFinal_03.Store.procAlteraCliente" />
+    <FunctionImportMapping FunctionImportName="procEliminaCliente" FunctionName="mnProjectoFinal_03.Store.procEliminaCliente" />
+  </EntityContainerMapping>
+</Mapping>

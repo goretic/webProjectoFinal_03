@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="mnProjectoFinal_03.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="mnProjectoFinal_03StoreContainer">
+          <EntitySet Name="Cliente" EntityType="mnProjectoFinal_03.Store.Cliente" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClientePK" />
+          </Key>
+          <Property Name="ClientePK" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" />
+          <Property Name="Rua" Type="varchar" MaxLength="50" />
+          <Property Name="Localidade" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoPostal" Type="char" MaxLength="8" />
+          <Property Name="Pais" Type="varchar" MaxLength="50" />
+          <Property Name="NIF" Type="char" MaxLength="9" />
+          <Property Name="Telefone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Function Name="procAdicionaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nome" Type="varchar" Mode="In" />
+          <Parameter Name="rua" Type="varchar" Mode="In" />
+          <Parameter Name="localidade" Type="varchar" Mode="In" />
+          <Parameter Name="codigoPostal" Type="char" Mode="In" />
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+          <Parameter Name="nif" Type="char" Mode="In" />
+          <Parameter Name="telefone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="procAlteraCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clientePK" Type="int" Mode="In" />
+          <Parameter Name="nome" Type="varchar" Mode="In" />
+          <Parameter Name="rua" Type="varchar" Mode="In" />
+          <Parameter Name="localidade" Type="varchar" Mode="In" />
+          <Parameter Name="codigoPostal" Type="char" Mode="In" />
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+          <Parameter Name="nif" Type="char" Mode="In" />
+          <Parameter Name="telefone" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="procEliminaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="clientePK" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mnProjectoFinal_03" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbProjectoFinal_03" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="mnProjectoFinal_03.Cliente" />
+          <FunctionImport Name="procAdicionaCliente">
+            <Parameter Name="nome" Mode="In" Type="String" />
+            <Parameter Name="rua" Mode="In" Type="String" />
+            <Parameter Name="localidade" Mode="In" Type="String" />
+            <Parameter Name="codigoPostal" Mode="In" Type="String" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+            <Parameter Name="nif" Mode="In" Type="String" />
+            <Parameter Name="telefone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="procAlteraCliente">
+            <Parameter Name="clientePK" Mode="In" Type="Int32" />
+            <Parameter Name="nome" Mode="In" Type="String" />
+            <Parameter Name="rua" Mode="In" Type="String" />
+            <Parameter Name="localidade" Mode="In" Type="String" />
+            <Parameter Name="codigoPostal" Mode="In" Type="String" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+            <Parameter Name="nif" Mode="In" Type="String" />
+            <Parameter Name="telefone" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="procEliminaCliente">
+            <Parameter Name="clientePK" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClientePK" />
+          </Key>
+          <Property Name="ClientePK" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Rua" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Localidade" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CodigoPostal" Type="String" MaxLength="8" Unicode="false" FixedLength="true" />
+          <Property Name="Pais" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NIF" Type="String" MaxLength="9" Unicode="false" FixedLength="true" />
+          <Property Name="Telefone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mnProjectoFinal_03StoreContainer" CdmEntityContainer="dbProjectoFinal_03">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="mnProjectoFinal_03.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ClientePK" ColumnName="ClientePK" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Rua" ColumnName="Rua" />
+                <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="NIF" ColumnName="NIF" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="procAdicionaCliente" FunctionName="mnProjectoFinal_03.Store.procAdicionaCliente" />
+          <FunctionImportMapping FunctionImportName="procAlteraCliente" FunctionName="mnProjectoFinal_03.Store.procAlteraCliente" />
+          <FunctionImportMapping FunctionImportName="procEliminaCliente" FunctionName="mnProjectoFinal_03.Store.procEliminaCliente" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbModeloStoreContainer" CdmEntityContainer="dbEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="dbModelo.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ClientePK" ColumnName="ClientePK" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Rua" ColumnName="Rua" />
+          <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+          <ScalarProperty Name="Pais" ColumnName="Pais" />
+          <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conta">
+      <EntityTypeMapping TypeName="dbModelo.Conta">
+        <MappingFragment StoreEntitySet="Conta">
+          <ScalarProperty Name="ContaPK" ColumnName="ContaPK" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalheConta">
+      <EntityTypeMapping TypeName="dbModelo.DetalheConta">
+        <MappingFragment StoreEntitySet="DetalheConta">
+          <ScalarProperty Name="DetalheContaPK" ColumnName="DetalheContaPK" />
+          <ScalarProperty Name="ContaFK" ColumnName="ContaFK" />
+          <ScalarProperty Name="SerieFK" ColumnName="SerieFK" />
+          <ScalarProperty Name="Movimento" ColumnName="Movimento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documento">
+      <EntityTypeMapping TypeName="dbModelo.Documento">
+        <MappingFragment StoreEntitySet="Documento">
+          <ScalarProperty Name="DocumentoPK" ColumnName="DocumentoPK" />
+          <ScalarProperty Name="SerieFK" ColumnName="SerieFK" />
+          <ScalarProperty Name="ClienteFK" ColumnName="ClienteFK" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IVA">
+      <EntityTypeMapping TypeName="dbModelo.IVA">
+        <MappingFragment StoreEntitySet="IVA">
+          <ScalarProperty Name="IVAPK" ColumnName="IVAPK" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Taxa" ColumnName="Taxa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Linha">
+      <EntityTypeMapping TypeName="dbModelo.Linha">
+        <MappingFragment StoreEntitySet="Linha">
+          <ScalarProperty Name="LinhaPK" ColumnName="LinhaPK" />
+          <ScalarProperty Name="DocumentoFK" ColumnName="DocumentoFK" />
+          <ScalarProperty Name="ProdutoFK" ColumnName="ProdutoFK" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="Preco" ColumnName="Preco" />
+          <ScalarProperty Name="IVA" ColumnName="IVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produto">
+      <EntityTypeMapping TypeName="dbModelo.Produto">
+        <MappingFragment StoreEntitySet="Produto">
+          <ScalarProperty Name="ProdutoPK" ColumnName="ProdutoPK" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Preço" ColumnName="Preço" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="IVAFK" ColumnName="IVAFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Serie">
+      <EntityTypeMapping TypeName="dbModelo.Serie">
+        <MappingFragment StoreEntitySet="Serie">
+          <ScalarProperty Name="SeriePK" ColumnName="SeriePK" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_AdicionaCliente" FunctionName="dbModelo.Store.sp_AdicionaCliente" />
+    <FunctionImportMapping FunctionImportName="sp_ApagaCliente" FunctionName="dbModelo.Store.sp_ApagaCliente" />
+    <FunctionImportMapping FunctionImportName="sp_EditaCliente" FunctionName="dbModelo.Store.sp_EditaCliente" />
+  </EntityContainerMapping>
+</Mapping>
